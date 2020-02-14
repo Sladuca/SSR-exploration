@@ -1,4 +1,4 @@
-import routes from './router'
+import routes from './lib/router'
 import ReactDOMServer from 'react-dom/server'
 
 addEventListener('fetch', event => {
