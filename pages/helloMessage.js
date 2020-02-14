@@ -8,7 +8,6 @@
  */
 
 import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 
 class HelloMessage extends React.Component {
   render () {
