@@ -58,51 +58,16 @@ if (typeof navigator !== 'undefined') {
 
 const header = `<!DOCTYPE html>
 <html lang='en'>
-  <title>Cloudflare Workers React PWA Example</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <style>
-  #app {
-  text-align: center
-}
-body {
-  margin: 0px
-}
-.Workers-Logo {
-  margin-right:20px
-  height: 100px
- }
-
-.React-Logo {
-  height: 100px
- }
-
-.App-header {
-  background-color: #282c34
-  min-height: 100vh
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  font-size: calc(10px + 2vmin)
-  color: white
-}
-.App-header-title {
-  font-size: xx-large
-  display: flex
-  align-items: center
-  font-weight: 600
-}
-.App-header img {
-    height: 100px
-}
-.App-link {
-  color: #61dafb
-}
+  html, body {
+    height: 100%; /* needed for container min-height */
+  }
   </style>
   <body>
-    <div id='app'>`
+`
 
-const footer = `</div>
-<script src='/worker.js'></script>
-</body>
-</html>`
+const footer = `
+  <script src='/worker.js'></script>
+  </body>
+</html>
+`
