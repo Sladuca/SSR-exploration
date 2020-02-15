@@ -1,16 +1,18 @@
-const path = require("path");
+const path = require("path")
 
 module.exports = {
-  target: 'webworker',
-  resolve: {
-    alias: {
-      fs: path.resolve(__dirname, './null.js'),
-    },
-  },
-  mode: 'production',
+  entry: "./index.js",
+  mode: "production",
   optimization: {
-    hints: false,
-    usedExports: true,
+    minimize: true
+  },
+  performance: {
+    hints: false
+  },
+  output: {
+    path: __dirname + "/dist",
+    publicPath: "dist",
+    filename: "worker.js"
   },
   module: {
     rules: [
@@ -20,10 +22,11 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react"]
+            presets: ["@babel/preset-react"],
+            plugins: ["babel-plugin-styled-components"],
           }
         }
       }
     ]
   }
-};
+}
