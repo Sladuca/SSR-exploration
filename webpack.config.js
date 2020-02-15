@@ -1,32 +1,30 @@
-const path = require("path")
-
 module.exports = {
-  entry: "./index.js",
-  mode: "production",
+  entry: './index.js',
+  mode: 'production',
   optimization: {
-    minimize: true
+    minimize: true,
   },
   performance: {
-    hints: false
+    hints: false,
   },
   output: {
-    path: __dirname + "/dist",
-    publicPath: "dist",
-    filename: "worker.js"
+    path: __dirname + '/dist',
+    publicPath: 'dist',
+    filename: 'worker.js',
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
-        type: "javascript/auto",
+        type: 'javascript/auto',
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-react"],
-            plugins: ["babel-plugin-styled-components"],
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-react'],
+            plugins: ['babel-plugin-styled-components'],
+          },
+        },
+      },
+    ],
+  },
 }
