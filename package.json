@@ -5,28 +5,28 @@
   "description": "A template for kick starting a Cloudflare Workers project",
   "main": "index.js",
   "scripts": {
+    "build": "wrangler build",
+    "kvput": "npm run build && wrangler kv:key put --binding=STATIC worker.js dist/worker.js --path",
+    "preview": "npm run kvput && wrangler preview",
+    "publish": "npm run kvput && wrangler publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "Sebastien La Duca <sladuca777@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "node-fetch": "^2.6.0",
-    "opn": "^6.0.0",
-    "prettier": "^1.18.2"
-  },
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "@cloudflare/wrangler": "^1.7.0",
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
-    "open": "^7.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "webpack": "^4.41.6"
   }
 }

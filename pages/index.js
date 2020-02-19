@@ -8,28 +8,10 @@
  */
 
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from '../lib/styles'
 import { Typography, Grid, TextField, Card, CardContent, CardActions, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    padding: theme.spacing(3)
-  },
-  cardTitle: {
-    fontSize: 'large'
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  row: {
-    margin: theme.spacing(3)
-  }
-}))
 
 function Index (props) {
   const classes = useStyles()

@@ -6,6 +6,7 @@ import ReactDOMServer from 'react-dom/server'
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event))
 })
+
 /**
  * Respond with hello worker text
  * @param {event} event
@@ -15,7 +16,7 @@ async function handleRequest(event) {
   // do SSR if the route is in the table
   if (u.pathname in routes) {
     const body = ReactDOMServer.renderToString(
-      React.cloneElement(routes[u.pathname], { name: 'World' }),
+      React.cloneElement(routes[u.pathname]),
     )
     return new Response(header + body + footer, {
       headers: {
@@ -29,19 +30,10 @@ async function handleRequest(event) {
   const cache = await caches.default
   let response = await cache.match(event.request)
 
-  // if not in cache, get from origin
+  // if not in cache, get from kv
   if (!response) {
-    // change the url to the s3 bucket
-    const url = new URL(
-      'https://qbhq-static-assets.s3.amazonaws.com/' + u.pathname,
-    )
-    const newInit = {
-      headers: {
-        'Set-Cookie': 'SameSite=None; Secure'
-      }
-    }
-    const newRequest = new Request(url, new Request(event.request, newInit))
-    response = await fetch(newRequest)
+    // get from KV
+    response = await STATIC.get(u.pathname)
     event.waitUntil(cache.put(event.request, response.clone()))
   }
 
